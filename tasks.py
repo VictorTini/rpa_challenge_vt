@@ -7,7 +7,7 @@ from RPA.Robocorp.WorkItems import WorkItems
 from functions import (create_image_folder,extract_date,write_csv_data,download_image_from_url,check_phrases,
                        check_for_dolar_sign,split_extracted_text,get_all_files_from_folder)
 
-from settings import URL,SEARCH_PHRASE,CATEGORY
+#from settings import URL,SEARCH_PHRASE,CATEGORY
 
 #os.environ['RC_WORKSPACE_ID'] = 'e65f7ad1-9f8c-40d5-89dd-3677462fb731'
 
@@ -107,11 +107,11 @@ class RpaChallenge:
             wi.get_input_work_item()
             url = wi.get_work_item_variable("url")
             search_phrase = wi.get_work_item_variable("search_phrase")
-            category = wi.get_work_item_variable("category")
+            # category = wi.get_work_item_variable("category")
             #number_of_months = wi.get_work_item_variable("number_of_months")
             self.open_website(url=url)
             self.begin_search(search_phrase=search_phrase)
-            self.select_category(categorys=category)
+            # self.select_category(categorys=category)
             self.sort_newest_news()
             #self.set_date_range(number_of_months)
             self.extract_website_data(search_phrase)
