@@ -51,9 +51,7 @@ class RpaChallenge:
         while self.browser.does_page_contain_button(show_more_button):
             try:
                 self.browser.wait_until_page_contains_element(locator=show_more_button)
-                time.sleep(1)
                 self.browser.scroll_element_into_view(locator=show_more_button)
-                time.sleep(1)
                 self.browser.click_button_when_visible(show_more_button)
                 time.sleep(3)
             except:
