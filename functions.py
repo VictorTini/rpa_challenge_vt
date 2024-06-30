@@ -30,11 +30,13 @@ def set_month_range(number_of_months: int) -> tuple[str, str]:
 
 
 def extract_date(date: str) -> str:
-    date_part = date.split('\n')[-1]
-    date_part = date_part.replace('Published On ', '').replace('Last update ', '')
-    date_obj = datetime.strptime(date_part, '%d %b %Y')
-    return date_obj.strftime('%d/%m/%Y')
-
+    try:
+        date_part = date.split('\n')[-1]
+        date_part = date_part.replace('Published On ', '').replace('Last update ', '')
+        date_obj = datetime.strptime(date_part, '%d %b %Y')
+        return date_obj.strftime('%d/%m/%Y')
+    except:
+        return 'Without Date'
 
 # def write_csv_data(data: list) -> None:
 #     with open("result.csv", "w") as f:
