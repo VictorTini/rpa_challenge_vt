@@ -70,7 +70,6 @@ class RpaChallenge:
         return ""
 
     def extract_website_data(self, search_phrase: str) -> None:
-        time.sleep(2)
         self.load_all_news()
         list_of_news = list(range(1, 101))
         extracted_data = []
