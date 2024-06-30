@@ -73,7 +73,7 @@ class RpaChallenge:
         extracted_data = []
         for value in list_of_news:
             element_list = f'//*[@id="main-content-area"]/div[2]/div[2]/article[{value}]'
-            date = extract_date(self.get_element_value(f"{element_list}/div[2]/footer/div/div/div"))
+            date = extract_date(self.get_element_value(f"{element_list}/div[2]/div[2]"))
             title = self.get_element_value(f"{element_list}/div[2]/div[1]")
             description = self.get_element_value(f"{element_list}/div[2]/div[2]")
             image = download_image_from_url(self.get_image_value(f"{element_list}/div[3]/div/div/img"))

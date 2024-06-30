@@ -1,7 +1,7 @@
 import re
 import os
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 import uuid
 import glob
@@ -31,12 +31,26 @@ def set_month_range(number_of_months: int) -> tuple[str, str]:
 
 def extract_date(date: str) -> str:
     try:
-        date_part = date.split('\n')[-1]
-        date_part = date_part.replace('Published On ', '').replace('Last update ', '')
-        date_obj = datetime.strptime(date_part, '%d %b %Y')
-        return date_obj.strftime('%d/%m/%Y')
+        today = datetime.today()
+
+        if 'hour ago' in date or 'hours ago' in date:
+            return today.strftime('%d/%m/%Y')
+        elif 'day ago' in date or 'days ago' in date:
+            days_ago = int(date.split()[0])
+            date_converted = today - timedelta(days=days_ago)
+            return date_converted.strftime('%d/%m/%Y')
+        else:
+            match = re.search(r'\b([A-Za-z]{3} \d{1,2}, \d{4})\b', date)
+            if match:
+                date_converted = datetime.strptime(match.group(1), '%b %d, %Y')
+                return date_converted.strftime('%d/%m/%Y')
+            else:
+            # Return the original string if no date found
+                return 'No data'
     except:
-        return 'Without Date'
+        return 'No data'
+
+
 
 # def write_csv_data(data: list) -> None:
 #     with open("result.csv", "w") as f:
