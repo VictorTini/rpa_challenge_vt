@@ -55,7 +55,7 @@ class RpaChallenge:
                 self.browser.click_button_when_visible(show_more_button)
                 time.sleep(3)
             except:
-                print("Page show more button done")
+                print("Show more")
 
     def get_element_value(self, path: str) -> str:
         if self.browser.does_page_contain_element(path):
@@ -107,15 +107,11 @@ class RpaChallenge:
             wi.get_input_work_item()
             url = wi.get_work_item_variable("url")
             search_phrase = wi.get_work_item_variable("search_phrase")
-            # category = wi.get_work_item_variable("category")
-            #number_of_months = wi.get_work_item_variable("number_of_months")
             self.open_website(url=url)
             time.sleep(2)
             self.begin_search(search_phrase=search_phrase)
-            # self.select_category(categorys=category)
             time.sleep(2)
             self.sort_newest_news()
-            #self.set_date_range(number_of_months)
             self.extract_website_data(search_phrase)
             wi.add_work_item_file("./result.xlsx", "RESULT_EXCEL.xlsx")
             files = get_all_files_from_folder()

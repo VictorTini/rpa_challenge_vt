@@ -15,20 +15,6 @@ def create_image_folder() -> None:
         os.makedirs(dir)
 
 
-def set_month_range(number_of_months: int) -> tuple[str, str]:
-    today = datetime.date.today()
-    end = today.strftime("%m/%d/%Y")
-    if number_of_months < 2:
-        start = today.replace(day=1).strftime("%m/%d/%Y")
-    else:
-        start = (
-            (today - datetime.timedelta(days=30 * (number_of_months - 1)))
-            .replace(day=1)
-            .strftime("%m/%d/%Y")
-        )
-    return start, end
-
-
 def extract_date(date: str) -> str:
     try:
         today = datetime.today()
@@ -45,18 +31,11 @@ def extract_date(date: str) -> str:
                 date_converted = datetime.strptime(match.group(1), '%b %d, %Y')
                 return date_converted.strftime('%d/%m/%Y')
             else:
-            # Return the original string if no date found
                 return 'No data'
     except:
         return 'No data'
 
 
-
-# def write_csv_data(data: list) -> None:
-#     with open("result.csv", "w") as f:
-#         writer = csv.writer(f)
-#         # writer.writerow(header)
-#         writer.writerows(data)
 
 
 def write_csv_data(data: list) -> None:
@@ -111,4 +90,4 @@ def get_all_files_from_folder(path="./images/*.jpg"):
 
 
 if __name__ == "__main__":
-    print(set_month_range(1))
+    print('Started')
