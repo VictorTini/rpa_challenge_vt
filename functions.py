@@ -46,9 +46,10 @@ def extract_date(date: str) -> str:
 
 
 def write_csv_data(data: list) -> None:
+    headers = ["date", "title", "description", "picture_filename", "title_dolar", "description_dolar", "count"]
     wb = Files()
-    wb.create_workbook()
-    wb.append_rows_to_worksheet(data)
+    wb.create_workbook(headers=headers)
+    wb.append_rows_to_worksheet(data,header=True)
     wb.save_workbook("result.xlsx")
 
 

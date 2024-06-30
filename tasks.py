@@ -77,7 +77,6 @@ class RpaChallenge:
             title = self.get_element_value(f"{element_list}/div[2]/div[1]")
             description = self.get_element_value(f"{element_list}/div[2]/div[2]")
             image = download_image_from_url(self.get_image_value(f"{element_list}/div[3]/div/div/img"))
-
             is_title_dolar = check_for_dolar_sign(title)
             is_description_dolar = check_for_dolar_sign(description)
             phrases_count = check_phrases(text_pattern=search_phrase, text=title)
@@ -97,6 +96,7 @@ class RpaChallenge:
                     ),
                 ]
             )
+            time.sleep(2)
         write_csv_data(extracted_data)
 
 
