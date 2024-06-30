@@ -51,7 +51,9 @@ class RpaChallenge:
         while self.browser.does_page_contain_button(show_more_button):
             try:
                 self.browser.wait_until_page_contains_element(locator=show_more_button)
+                time.sleep(1)
                 self.browser.scroll_element_into_view(locator=show_more_button)
+                time.sleep(1)
                 self.browser.click_button_when_visible(show_more_button)
                 time.sleep(3)
             except:
@@ -68,6 +70,7 @@ class RpaChallenge:
         return ""
 
     def extract_website_data(self, search_phrase: str) -> None:
+        time.sleep(2)
         self.load_all_news()
         list_of_news = list(range(1, 101))
         extracted_data = []
