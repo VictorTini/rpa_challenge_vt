@@ -1,3 +1,15 @@
+# Template: My Project
+To use my robot, I start directly from the Robocorp workspace with the following work item variables:
+
+{
+  "url": "https://www.aljazeera.com/",
+  "search_phrase": "art"
+}
+
+I only use these two variables because that's what my project requires.
+
+To use it yourself, clone this repository, create and link your Robocorp workspace to this public repository, and start with the work item variables. You can change the search_phrase if desired.
+
 # Template: Python - Minimal
 
 This template leverages the new [Python framework](https://github.com/robocorp/robocorp), the [libraries](https://github.com/robocorp/robocorp/blob/master/docs/README.md#python-libraries) from to same project as well.
